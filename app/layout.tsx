@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Next.js on GitHub Pages',
-  description: 'Deploy your static Next.js site to GitHub Pages.',
+  title: 'Death Clock',
+  description: 'A countdown timer showing how much time you have left.',
 };
 
 export default function RootLayout({
