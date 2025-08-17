@@ -4,19 +4,31 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 import YearsInput from './components/YearsInput';
 import CountdownTimer from './components/CountdownTimer';
 
+interface DeathClockData {
+  years: number;
+  startTimestamp: number;
+}
+
 export default function Home() {
-  const [years, setYears] = useLocalStorage<number | null>('death-clock-years', null);
+  const [clockData, setClockData] = useLocalStorage<DeathClockData | null>('death-clock-data', null);
 
   const handleYearsSubmit = (submittedYears: number) => {
-    setYears(submittedYears);
+    const data: DeathClockData = {
+      years: submittedYears,
+      startTimestamp: Date.now()
+    };
+    setClockData(data);
   };
 
   return (
     <main>
-      {years === null ? (
+      {clockData === null ? (
         <YearsInput onSubmit={handleYearsSubmit} />
       ) : (
-        <CountdownTimer years={years} />
+        <CountdownTimer 
+          years={clockData.years} 
+          startTimestamp={clockData.startTimestamp} 
+        />
       )}
     </main>
   );

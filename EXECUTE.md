@@ -1,13 +1,1 @@
-So I need you to make an incredibly simple web application. Your starting base is just the Next.js template codebase for a React application. So here's what I want you to make. The website is very simple.
-
-There are two views. I will describe the first view below.
-
-The first time the user goes to the site, there is a text box in the middle of the screen, not a modal. It asks the user to estimate how many years they have left in their life. The user has a text input for this. They type into the text input the number of years they have left. Then there's a submit button.
-
-When the user clicks submit, the number is stored in local storage. Then the user is taken to the second view, which is described below.
-
-The second view simply takes the number of years that the user provided in the first view, which is now stored, and converts it from years into days. The clock count down one second at a time, and it should simply be an array of numbers indicating the number of days, hours, and minutes remaining. There is a reference image included for you at clock_reference.png. Underneath, put the following phrase in large font:
-
-“This is how much time you have left.”
-
-If the user leaves the site and returns to the site, they should not see the first view, but they should instead see the second view since the number of years they submitted in the first View has already been recorded.
+So I need you to make one modification to the site. Currently the functionality works as follows. The user inputs a number and then they are given a clock that counts down from that number. However, the flaw that we have right now is that whenever the user refreshes the page or closes and reopens the page, it resets the timer. I don't want it to work that way. I am now going to describe what I need you to change to rectify this issue. On the second view, I need you to subtract the current time from the number provided by the user in the first view. So for example, let us imagine that in the first view, the user had input the number 1, so they would have 1 year or 365 days. Now, in that case, if the user were to go to the second view, they would see a clock that counts down from 365 days. But let us imagine that the user were to close the page for and then come back after 10 days had passed. In that case, we would want the clock to count down from 355 days So in other words, what I need you to do is convert both the number that the user has given to you and the current time when the user visits the second view and subtract the current time from the number that has been provided from the user. Does that make sense? Please ask me if you need any more clarification. Thank you.

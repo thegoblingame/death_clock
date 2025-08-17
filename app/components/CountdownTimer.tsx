@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 
 interface CountdownTimerProps {
   years: number;
+  startTimestamp: number;
 }
 
 interface TimeRemaining {
@@ -13,7 +14,7 @@ interface TimeRemaining {
   seconds: number;
 }
 
-export default function CountdownTimer({ years }: CountdownTimerProps) {
+export default function CountdownTimer({ years, startTimestamp }: CountdownTimerProps) {
   const [timeRemaining, setTimeRemaining] = useState<TimeRemaining>({
     days: 0,
     hours: 0,
@@ -22,7 +23,8 @@ export default function CountdownTimer({ years }: CountdownTimerProps) {
   });
 
   useEffect(() => {
-    const targetDate = new Date();
+    const startDate = new Date(startTimestamp);
+    const targetDate = new Date(startDate);
     targetDate.setFullYear(targetDate.getFullYear() + years);
 
     const updateCountdown = () => {
@@ -46,7 +48,7 @@ export default function CountdownTimer({ years }: CountdownTimerProps) {
     const interval = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(interval);
-  }, [years]);
+  }, [years, startTimestamp]);
 
   const formatNumber = (num: number) => {
     return num.toString().padStart(2, '0');
